@@ -17,7 +17,7 @@ int main()
 	// Create and open a window for the game
 	RenderWindow window(vm, "Chaos Game!!", Style::Default);
 
-  //Added this in by Anna
+  	//Done by Anna
 	srand(static_cast<unsigned int>(time(0))); 
 
 	//https://fonts.google.com/specimen/Roboto
@@ -27,6 +27,7 @@ int main()
 	Text newText("Please press three dots", newFont, 50);
 	newText.setFillColor(Color::White);
 	newText.setStyle(Text::Bold);
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 	vector<Vector2f> vertices;
 	vector<Vector2f> points;
