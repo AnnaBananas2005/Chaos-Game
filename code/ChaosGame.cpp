@@ -22,7 +22,7 @@ int main()
 
 	//https://fonts.google.com/specimen/Roboto
 	Font newFont;
-	newFont.loadFromFile("fonts/Roboto-Black.ttf"); // relative path instead of static path
+	newFont.loadFromFile("fonts/Roboto-Black.ttf"); // Changed to use a relative path instead of a static path
 
 	Text newText("Please press three dots", newFont, 50);
 	newText.setFillColor(Color::White);
@@ -51,14 +51,17 @@ int main()
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
+					// prints user input to the console
 					std::cout << "the left button was pressed" << std::endl;
 					std::cout << "mouse x: " << event.mouseButton.x << std::endl;
 					std::cout << "mouse y: " << event.mouseButton.y << std::endl;
 
+					// store the first 3 click locations 
 					if (vertices.size() < 3)
 					{
 						vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
 					}
+					// after that it stores the first click as a point and then begins the chaos math
 					else if (points.size() == 0)
 					{
 						//Done by Ted
@@ -102,23 +105,29 @@ int main()
 		Draw
 		****************************************
 		*/
+
+		///Drawing Code done by Ted
+		// Clears the framebuffer before drawing the next frame
 		window.clear();
+		// For each of the corners of the triangles it draws a 10x10 rectangle(which makes it a square)
 		for (int i = 0; i < vertices.size(); i++)
 		{
-			RectangleShape rect(Vector2f(10, 10));
-			rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
-			rect.setFillColor(Color::Blue);
-			window.draw(rect);
-		}
-		///Drawing Code done by Ted
+			RectangleShape rect(Vector2f(10, 10));	//10x10 rectangle
+			rect.setPosition(Vector2f(vertices[i].x, vertices[i].y)); //puts the rectangle at that point
+			rect.setFillColor(Color::Blue); //blue :3
+			window.draw(rect); //draw it
+		}		
+		// for each of the points it draws a circle there
 		for (int i = 0; i < points.size(); i++)
 		{
-			CircleShape point(2.0f);
-			point.setPosition(points[i]);
-			point.setFillColor(Color::Blue);
-			window.draw(point);
+			CircleShape point(2.0f); //radius of 2
+			point.setPosition(points[i]); //sets position there
+			point.setFillColor(Color::Blue); // blue :3
+			window.draw(point); //draw it
 		}
+		// draw the text as well
 		window.draw(newText);
+		//update the display with the new frame buffer, effectively pushing the frame we just drew to the display 
 		window.display();
 	}
 	return 0;
