@@ -22,7 +22,7 @@ int main()
 
 	//https://fonts.google.com/specimen/Roboto
 	Font newFont;
-	newFont.loadFromFile("/home/ubuntu/Desktop/cisp400/fonts/Roboto/static/Roboto-Black.ttf"); //put in path
+	newFont.loadFromFile("fonts/Roboto-Black.ttf"); // relative path instead of static path
 
 	Text newText("Please press three dots", newFont, 50);
 	newText.setFillColor(Color::White);
